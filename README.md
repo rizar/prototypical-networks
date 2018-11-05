@@ -1,6 +1,6 @@
 # Prototypical Networks for Few-shot Learning
 
-A for of the code for the NIPS 2017 paper [Prototypical Networks for Few-shot Learning](http://papers.nips.cc/paper/6996-prototypical-networks-for-few-shot-learning.pdf).
+A fork of the code for the NIPS 2017 paper [Prototypical Networks for Few-shot Learning](http://papers.nips.cc/paper/6996-prototypical-networks-for-few-shot-learning.pdf).
 
 If you use this code, please cite the original paper:
 
@@ -11,7 +11,7 @@ If you use this code, please cite the original paper:
   booktitle={Advances in Neural Information Processing Systems},
   year={2017}
  }
- ```
+```
 
 ## Training a prototypical network
 
@@ -19,9 +19,10 @@ If you use this code, please cite the original paper:
 
 ```
 conda env create -f environment.yaml
-* Install Torchnet: `pip install git+https://github.com/pytorch/tnt.git@master`.
-* Install the protonets package by running `pip install -e .`
 ```
+
+* Install Torchnet: `pip install git+https://github.com/pytorch/tnt.git@master`.
+* Install the protonets package by running `pip install -e`.
 
 ### Set up the Omniglot dataset
 
