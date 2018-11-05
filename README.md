@@ -1,8 +1,8 @@
 # Prototypical Networks for Few-shot Learning
 
-Code for the NIPS 2017 paper [Prototypical Networks for Few-shot Learning](http://papers.nips.cc/paper/6996-prototypical-networks-for-few-shot-learning.pdf).
+A for of the code for the NIPS 2017 paper [Prototypical Networks for Few-shot Learning](http://papers.nips.cc/paper/6996-prototypical-networks-for-few-shot-learning.pdf).
 
-If you use this code, please cite our paper:
+If you use this code, please cite the original paper:
 
 ```
 @inproceedings{snell2017prototypical,
@@ -17,10 +17,11 @@ If you use this code, please cite our paper:
 
 ### Install dependencies
 
-* This code has been tested on Ubuntu 16.04 with Python 3.6 and PyTorch 0.4.
-* Install [PyTorch and torchvision](http://pytorch.org/).
-* Install [torchnet](https://github.com/pytorch/tnt) by running `pip install git+https://github.com/pytorch/tnt.git@master`.
-* Install the protonets package by running `python setup.py install` or `python setup.py develop`.
+```
+conda env create -f environment.yaml
+* Install Torchnet: `pip install git+https://github.com/pytorch/tnt.git@master`.
+* Install the protonets package by running `pip install -e .`
+```
 
 ### Set up the Omniglot dataset
 
@@ -36,3 +37,11 @@ If you use this code, please cite our paper:
 ### Evaluate
 
 * Run evaluation as: `python scripts/predict/few_shot/run_eval.py --model.model_path results/trainval/best_model.pt`.
+
+### Interactive mode
+
+```
+python scripts/interactive.py --data <path-to-the-alphabet> --model <model>
+```
+
+Takes a list of .png files to be classified as input.
