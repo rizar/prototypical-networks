@@ -16,7 +16,7 @@ from torchnet.transform import compose
 import protonets
 from protonets.data.base import convert_dict, CudaTransform, EpisodicBatchSampler, SequentialBatchSampler
 
-OMNIGLOT_DATA_DIR  = os.path.join(os.path.dirname(__file__), '../../data/omniglot')
+OMNIGLOT_DATA_DIR  = os.path.join('/home/dzmitry/Dist/prototypical-networks/data/omniglot')
 OMNIGLOT_CACHE = { }
 
 def load_image_path(key, out_field, d):
