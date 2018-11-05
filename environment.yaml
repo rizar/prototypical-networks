@@ -1,0 +1,11 @@
+name: proto
+channels:
+    - pytorch
+    - defaults
+dependencies:
+    - python=3.6
+    - pytorch
+    - cuda90
+    - torchvision
+    - tqdm
+
