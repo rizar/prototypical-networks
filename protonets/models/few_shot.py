@@ -21,6 +21,17 @@ class Protonet(nn.Module):
 
         self.encoder = encoder
 
+    def compute_prototypes(self, xs):
+        n_class = xs.size(0)
+        n_support = xs.size(1)
+        z_proto = self.encoder.forward(xs.view(n_class * n_support, *xs.size()[2:]))
+        return z_proto.view(n_class, n_support, z_proto.size(-1)).mean(1)
+
+    def predict_class(self, z_proto, xq):
+        zq = self.encoder.forward(xq)
+        dists = euclidean_dist(zq, z_proto)
+        return dists.min(1)[1]
+
     def loss(self, sample):
         xs = Variable(sample['xs']) # support
         xq = Variable(sample['xq']) # query
