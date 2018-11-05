@@ -18,7 +18,7 @@ class Flatten(nn.Module):
 class Protonet(nn.Module):
     def __init__(self, encoder):
         super(Protonet, self).__init__()
-        
+
         self.encoder = encoder
 
     def loss(self, sample):
@@ -36,14 +36,9 @@ class Protonet(nn.Module):
         if xq.is_cuda:
             target_inds = target_inds.cuda()
 
-        x = torch.cat([xs.view(n_class * n_support, *xs.size()[2:]),
-                       xq.view(n_class * n_query, *xq.size()[2:])], 0)
-
-        z = self.encoder.forward(x)
-        z_dim = z.size(-1)
-
-        z_proto = z[:n_class*n_support].view(n_class, n_support, z_dim).mean(1)
-        zq = z[n_class*n_support:]
+        z_proto = self.encoder.forward(xs.view(n_class * n_support, *xs.size()[2:]))
+        z_proto = z_proto.view(n_class, n_support, z_proto.size(-1)).mean(1)
+        zq = self.encoder.forward(xq.view(n_class * n_query, *xq.size()[2:]))
 
         dists = euclidean_dist(zq, z_proto)
 
